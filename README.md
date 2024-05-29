@@ -1,11 +1,11 @@
 # Realty Agent Software
 
 TODO
-- [ ] Add authentication (Clerk)
-- [ ] Setup Database (Supabase/Vercel)
-- [ ] Complete all necessary UI and controls
+- [X] Add authentication (Clerk)
+- [X] Setup Database (Neon via conn-string)
 - [ ] Pages
   - [ ] Core Entities Pages -> Details Page (Edit Mode)
+- [ ] Complete all necessary UI and controls
 - [ ] Complete Landing page
 
 Database Schema Description

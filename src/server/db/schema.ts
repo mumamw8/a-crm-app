@@ -26,7 +26,7 @@ export const user = createTable("user", {
 
   firstName: varchar("first_name", { length: 1024 }),
   lastName: varchar("last_name", { length: 1024 }),
-  username: varchar("username", { length: 1024 }).unique(),
+  email: varchar("email", { length: 1024 }).unique(),
   avatarUrl: varchar("avatar_url"),
 
   // billing_address: jsonb("social_buttons"),
@@ -38,7 +38,7 @@ export const user = createTable("user", {
   updatedAt: timestamp("updated_at"),
 
   organizationId: uuid("organization_id").references(() => organization.id, { onDelete: "set null"}),
-  roleId: uuid("role_id").references(() => userRole.id, { onDelete: "set null"}),
+  roleId: integer("role_id").references(() => userRole.id, { onDelete: "set null"}),
 });
 // UserRole
 export const userRole = createTable("user_role", {
