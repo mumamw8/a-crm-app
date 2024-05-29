@@ -1,12 +1,12 @@
 # Realty Agent Software
 
 TODO
-- Add authentication (Clerk)
-- Setup Database (Supabase/Vercel)
-- Complete all necessary UI and controls
-- Pages
-  - Core Entities Pages -> Details Page (Edit Mode)
-- Complete Landing page
+- [ ] Add authentication (Clerk)
+- [ ] Setup Database (Supabase/Vercel)
+- [ ] Complete all necessary UI and controls
+- [ ] Pages
+  - [ ] Core Entities Pages -> Details Page (Edit Mode)
+- [ ] Complete Landing page
 
 Database Schema Description
 CRM Core Entities

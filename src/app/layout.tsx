@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs';
 import { SFLicenseProvider } from "@/providers/sf-license-provider";
 import "@/styles/globals.css";
 
@@ -15,12 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <SFLicenseProvider>
-          {children}
-        </SFLicenseProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body>
+          <SFLicenseProvider>
+            {children}
+          </SFLicenseProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
