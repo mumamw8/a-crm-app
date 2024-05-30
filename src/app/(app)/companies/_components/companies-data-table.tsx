@@ -22,6 +22,7 @@ export default function CompaniesDataTable() {
       <Link className='text-blue-500 hover:underline' href={`/companies/${props.id}`}>Details</Link>
     )
   }
+  
   return (
     <>
       <GridComponent
