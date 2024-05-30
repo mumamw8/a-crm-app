@@ -9,12 +9,18 @@ import {
   type ColumnModel
 } from '@syncfusion/ej2-react-grids';
 import { companiesData } from '@/lib/data';
+import Link from 'next/link';
 
 export default function CompaniesDataTable() {
   const pageSettings: object = { pageSize: 6 };
   const filterSettings: object = { type: 'Excel' };
   const dateFormatter = (field: string, data: any, column: ColumnModel ) => {
     return new Date(data[field]);
+  }
+  const detailsButton = (props: any) => {
+    return (
+      <Link className='text-blue-500 hover:underline' href={`/companies/${props.id}`}>Details</Link>
+    )
   }
   return (
     <>
@@ -31,6 +37,7 @@ export default function CompaniesDataTable() {
         gridLines='Both'
       >
         <ColumnsDirective>
+          <ColumnDirective headerText='' width="100" template={detailsButton} textAlign='Center' />
           <ColumnDirective headerText='Name' field="name" width="250" />
           <ColumnDirective headerText='Email' field="email" width="250" />
           <ColumnDirective headerText='Phone' field="phone" width="250" />

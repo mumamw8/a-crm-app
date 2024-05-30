@@ -8,6 +8,9 @@ TODO
 - [ ] Complete all necessary UI and controls
 - [ ] Complete Landing page
 
+Pages
+- Entitys Page -> [Entity Details Page]
+
 Database Schema Description
 CRM Core Entities
 - User (one Organization) (many Deal) (many Property)
