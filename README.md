@@ -5,6 +5,7 @@ TODO
 - [X] Setup Database (Neon via conn-string)
 - [ ] Pages
   - [ ] Core Entities Pages -> Details Page (Edit Mode)
+- [ ] Create Table UI Control
 - [ ] Complete all necessary UI and controls
 - [ ] Complete Landing page
 
