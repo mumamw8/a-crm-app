@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { db } from "@/server/db";
-import { company } from "@/server/db/schema";
+import { person } from "@/server/db/schema";
 import { count } from "drizzle-orm";
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -18,8 +18,8 @@ export async function GET(request: Request) {
   //   .orderBy(company.name);
   const result = await db
     .select()
-    .from(company)
-    .orderBy(company.name)
+    .from(person)
+    .orderBy(person.lastName)
     .limit(pageSize)
     .offset(skip);
 
