@@ -37,22 +37,12 @@ export const user = createTable("user", {
     .notNull(),
   updatedAt: timestamp("updated_at"),
 
-  organizationId: uuid("organization_id").references(() => organization.id, { onDelete: "set null"}),
   roleId: integer("role_id").references(() => userRole.id, { onDelete: "set null"}),
 });
 // UserRole
 export const userRole = createTable("user_role", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 1024 }),
-});
-
-// Workspace
-export const workspace = createTable("workspace", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: varchar("name", { length: 1024 }),
-
-  ownerId: uuid("owner_id").references(() => user.id, { onDelete: "set null"}),
-  organizationId: uuid("organization_id").references(() => organization.id, { onDelete: "set null"}),
 });
 
 // Organization
@@ -66,6 +56,22 @@ export const organization = createTable("organization", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
   updatedAt: timestamp("updated_at"),
+});
+
+// UserOrganization
+export const userOrganization = createTable("user_organization", {
+  id: serial("id").primaryKey(),
+  ownerId: uuid("owner_id").references(() => user.id, { onDelete: "cascade"}),
+  organizationId: uuid("organization_id").references(() => organization.id, { onDelete: "cascade"}),
+});
+
+// Workspace
+export const workspace = createTable("workspace", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: varchar("name", { length: 1024 }),
+
+  ownerId: uuid("owner_id").references(() => user.id, { onDelete: "set null"}),
+  organizationId: uuid("organization_id").references(() => organization.id, { onDelete: "set null"}),
 });
 
 // Person
@@ -104,7 +110,8 @@ export const company = createTable("company", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
   updatedAt: timestamp("updated_at"),
-
+  
+  userId: uuid("user_id").references(() => user.id, { onDelete: "set null"}),
   workspaceId: uuid("workspace_id").references(() => workspace.id, { onDelete: "set null"}),
 });
 

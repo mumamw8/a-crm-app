@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { db } from "@/server/db";
 import { person } from "@/server/db/schema";
-import { count } from "drizzle-orm";
+// import { count } from "drizzle-orm";
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 export async function GET(request: Request) {
