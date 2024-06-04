@@ -4,7 +4,7 @@ type Props = {
 
 function CompanyPage({ params }: Props) {
   return (
-    <div>CompanyPage { params.companyId }</div>
+    <div>Company Page Details:  { params.companyId }</div>
   )
 }
 
