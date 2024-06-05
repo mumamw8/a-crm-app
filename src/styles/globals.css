@@ -12,4 +12,14 @@
 @import '../../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap.css';
 @import "../../node_modules/@syncfusion/ej2-react-grids/styles/bootstrap.css";
 
-@import "@/app/(app)/_styles/grid.module.css"
+@import "@/app/(app)/_styles/grid.module.css";
+
+input[type="text"], textarea{
+  @apply bg-gray-100 disabled:bg-inherit text-gray-700  p-2 focus:outline-blue-300 hover:outline-blue-300;
+}
+label.input-label{
+  @apply font-medium text-gray-900 py-2;
+}
+.input-container {
+  @apply grid grid-cols-1 gap-1 py-3 sm:grid-cols-[100px_1fr] sm:gap-4
+}
