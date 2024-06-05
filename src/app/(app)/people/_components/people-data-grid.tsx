@@ -28,7 +28,7 @@ function PeopleDataGrid(this: any) {
   });
   const grid = useRef<GridComponent>(null);
   const data: object | undefined = [];
-  const BASE_URL = "/api/person";
+  const BASE_URL = "/api/people";
 
   function renderComplete() {
     const state = { skip: 0, take: 10000 };

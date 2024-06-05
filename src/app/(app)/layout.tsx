@@ -35,7 +35,7 @@ async function AppLayout({ children }: { children: React.ReactNode }) {
       <AppHeader />
       <div className="overflow-hidden grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr] w-full h-full">
         <AppSidebar />
-        <div className="bg-gray-100 h-full overflow-scroll p-8">
+        <div className="bg-gray-100 h-full overflow-scroll p-8 pb-32">
           {children}
         </div>
       </div>
