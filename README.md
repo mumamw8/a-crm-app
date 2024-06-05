@@ -3,9 +3,46 @@
 TODO
 - [X] Add authentication (Clerk)
 - [X] Setup Database (Neon via conn-string)
-- [ ] Pages
-  - [ ] Core Entities Pages -> Details Page (Edit Mode)
-- [ ] Create Table UI Control
+- [X] Pages
+  - [X] Core Entities Pages -> Details Page (Edit Mode)
+- [X] Create Table UI Control
+- [ ] Endpoints One
+  - [ ] people
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+  - [ ] deals
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+  - [ ] leads
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+  - [ ] companies
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+- [ ] Endpoints Two
+  - [ ] tasks
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+  - [ ] files
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
+  - [ ] notes
+    - [ ] GET all
+    - [ ] GET one
+    - [ ] POST
+    - [ ] PUT
 - [ ] Complete all necessary UI and controls
 - [ ] Complete Landing page
 
