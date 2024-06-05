@@ -1,10 +1,10 @@
-import PeopleDataTable from "./_components/people-data-table";
+import PeopleDataGrid from "./_components/people-data-grid";
 
 function PeoplePage() {
   return (
     <div>
       <h2 className='text-2xl font-semibold mb-4'>People</h2>
-      <PeopleDataTable />
+      <PeopleDataGrid />
     </div>
   )
 }

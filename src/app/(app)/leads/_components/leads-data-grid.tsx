@@ -22,13 +22,13 @@ import {
 import { Ajax } from "@syncfusion/ej2-base";
 import Link from "next/link";
 
-function DataGrid(this: any) {
+function LeadsDataGrid(this: any) {
   useEffect(() => {
     renderComplete();
   });
   const grid = useRef<GridComponent>(null);
   const data: object | undefined = [];
-  const BASE_URL = "/api/company";
+  const BASE_URL = "/api/lead";
 
   function renderComplete() {
     const state = { skip: 0, take: 10000 };
@@ -89,7 +89,7 @@ function DataGrid(this: any) {
     return (
       <Link
         className="text-blue-500 hover:underline"
-        href={`/companies/${props.id}`}
+        href={`/leads/${props.id}`}
       >
         Details
       </Link>
@@ -106,7 +106,7 @@ function DataGrid(this: any) {
       allowFiltering={true}
       allowPaging={true}
       pageSettings={{ pageCount: 4, pageSize: 20 }}
-      filterSettings={{ type: "Excel" }}
+      filterSettings={{ type: "CheckBox" }}
       height={"auto"}
       rowHeight={50}
       gridLines="Both"
@@ -118,10 +118,10 @@ function DataGrid(this: any) {
           template={detailsButton}
           textAlign="Center"
         />
-        <ColumnDirective headerText="Name" field="name" width="150" />
+        <ColumnDirective headerText="Fist Name" field="firstName" width="150" />
+        <ColumnDirective headerText="Last Name" field="lastName" width="150" />
         <ColumnDirective headerText="Email" field="email" width="150" />
         <ColumnDirective headerText="Phone" field="phone" width="150" />
-        <ColumnDirective headerText="Website" field="website" width="250" />
         <ColumnDirective
           allowFiltering={false}
           headerText="Created"
@@ -145,4 +145,4 @@ function DataGrid(this: any) {
     </GridComponent>
   );
 }
-export default DataGrid;
+export default LeadsDataGrid;
