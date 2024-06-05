@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { db } from "@/server/db";
-import { person } from "@/server/db/schema";
+import { lead } from "@/server/db/schema";
 import { count } from "drizzle-orm";
 // import { count } from "drizzle-orm";
 
@@ -14,12 +14,12 @@ export async function GET(request: Request) {
   try {
     const totalRecordsCount = await db
     .select({ count: count() })
-    .from(person);
+    .from(lead);
 
     const result = await db
     .select()
-    .from(person)
-    .orderBy(person.lastName)
+    .from(lead)
+    .orderBy(lead.lastName)
     .limit(take)
     .offset(skip);
 

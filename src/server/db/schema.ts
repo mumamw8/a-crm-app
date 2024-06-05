@@ -145,7 +145,8 @@ export const leadStatus = createTable("lead_status", {
 // Deal
 export const deal = createTable("deal", {
   id: uuid("id").primaryKey().defaultRandom(),
-  name: varchar("name", { length: 1024 }),
+  title: varchar("title", { length: 1024 }),
+  description: text("description"),
 
   createdAt: timestamp("created_at")
     .default(sql`CURRENT_TIMESTAMP`)

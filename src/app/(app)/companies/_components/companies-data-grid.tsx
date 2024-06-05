@@ -22,7 +22,7 @@ import {
 import { Ajax } from "@syncfusion/ej2-base";
 import Link from "next/link";
 
-function DataGrid(this: any) {
+function CompanyDataGrid(this: any) {
   useEffect(() => {
     renderComplete();
   });
@@ -106,7 +106,7 @@ function DataGrid(this: any) {
       allowFiltering={true}
       allowPaging={true}
       pageSettings={{ pageCount: 4, pageSize: 20 }}
-      filterSettings={{ type: "Excel" }}
+      filterSettings={{ type: "CheckBox" }}
       height={"auto"}
       rowHeight={50}
       gridLines="Both"
@@ -145,4 +145,5 @@ function DataGrid(this: any) {
     </GridComponent>
   );
 }
-export default DataGrid;
+
+export default CompanyDataGrid;
