@@ -28,7 +28,7 @@ function DataGrid(this: any) {
   });
   const grid = useRef<GridComponent>(null);
   const data: object | undefined = [];
-  const BASE_URL = "/api/company";
+  const BASE_URL = "/api/companies";
 
   function renderComplete() {
     const state = { skip: 0, take: 10000 };

@@ -25,6 +25,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@syncfusion/ej2-react-grids": "^25.2.5",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "@tanstack/react-table": "^8.17.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.29.5",
@@ -33,7 +34,10 @@
     "next": "^14.2.1",
     "postgres": "^3.4.3",
     "react": "18.2.0",
+    "react-data-table-component": "^7.6.2",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "styled-components": "^6.1.11",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.3"

@@ -2,16 +2,67 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use server";
 
-import { type SelectedUser } from "@/types";
+import { db } from "@/server/db";
+import { person } from "@/server/db/schema";
+import { currentUser } from "@clerk/nextjs/server";
+import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
+import { getUser } from "./userActions";
+import { updateData } from "@syncfusion/ej2-react-grids";
 
-export async function getPerson(id:string) {
-  const res = await fetch(`http://localhost:3000/api/people/${id}`); 
+export async function getPerson(id: string) {
+  const user = await currentUser();
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+  if (!user) {
+    return null;
   }
 
-  const personData: SelectedUser[] = await res.json();
+  const dbUser = await getUser();
+
+  if (!dbUser) {
+    return null;
+  }
+
+  const personData = await db
+    .select()
+    .from(person)
+    .where(eq(person.id, id));
 
   return personData[0];
+}
+
+export async function savePersonDetails(formData: FormData, personId: string) {
+  const user = await currentUser();
+
+  if (!user) {
+    return false;
+  }
+
+  const dbUser = await getUser();
+
+  if (!dbUser) {
+    return false;
+  }
+
+  const personUpdateData = {
+    firstName: formData.get('firstName') as string,
+    lastName: formData.get('lastName') as string,
+    email: formData.get('email') as string,
+    phone: formData.get('phone') as string,
+    updatedAt: new Date()
+  }
+  
+  try {
+    await db
+      .update(person)
+      .set({...personUpdateData})
+      .where(eq(person.id, personId))
+      .returning({ updatedId: person.id });
+
+      revalidatePath("/people/[slug]", "page");
+      return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 }

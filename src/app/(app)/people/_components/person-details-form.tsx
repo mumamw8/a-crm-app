@@ -1,9 +1,11 @@
 "use client";
 
+import { savePersonDetails } from "@/actions/personActions";
 import SubmitFormButton from "@/components/buttons/SubmitFormButton";
 import { type SelectedPerson } from "@/types";
 import { EditIcon, SaveIcon } from "lucide-react";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 type Props = {
   person: SelectedPerson;
@@ -11,12 +13,26 @@ type Props = {
 
 function PersonDetailsForm(props: Props) {
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [changesMade, setChanagesMade] = useState<boolean>(false);
+  const [changesMade, setChangesMade] = useState<boolean>(false);
+
+  const handleSubmit = async (formData: FormData) => {
+    const result = await savePersonDetails(formData, props.person.id);
+    if (result) {
+      toast.success("Saved!");
+      console.log("Saved!");
+      setChangesMade(false);
+      setEditMode(false);
+    } else {
+      toast.error("Save Failed!");
+      console.log("Save Failed!");
+      // setChangesMade(false);
+    }
+  };
 
   return (
     <div className="flex flex-col w-full">
       {!editMode && <button onClick={() => setEditMode(true)} className="mb-2"><EditIcon className="w-6 h-6 text-gray-500" /></button>}
-        <form>
+        <form action={handleSubmit}>
           <fieldset disabled={!editMode}>
             <div className="divide-y divide-gray-100 text-sm">
               <div className="input-container">
@@ -28,8 +44,8 @@ function PersonDetailsForm(props: Props) {
                   id="firstName"
                   name="firstName"
                   defaultValue={props.person.firstName ?? ""}
-                  placeholder="John Doe"
-                  onChange={() => setChanagesMade(true)}
+                  placeholder="Fist"
+                  onChange={() => setChangesMade(true)}
                 />
               </div>
               <div className="input-container">
@@ -41,8 +57,8 @@ function PersonDetailsForm(props: Props) {
                   id="lastName"
                   name="lastName"
                   defaultValue={props.person.lastName ?? ""}
-                  placeholder="John Doe"
-                  onChange={() => setChanagesMade(true)}
+                  placeholder="Last"
+                  onChange={() => setChangesMade(true)}
                 />
               </div>
               <div className="input-container">
@@ -55,7 +71,7 @@ function PersonDetailsForm(props: Props) {
                   name="email"
                   defaultValue={props.person.email ?? ""}
                   placeholder="example@email.com"
-                  onChange={() => setChanagesMade(true)}
+                  onChange={() => setChangesMade(true)}
                 />
               </div>
               <div className="input-container">
@@ -68,15 +84,9 @@ function PersonDetailsForm(props: Props) {
                   name="phone"
                   defaultValue={props.person.phone ?? ""}
                   placeholder="+1 --- --- ----"
-                  onChange={() => setChanagesMade(true)}
+                  onChange={() => setChangesMade(true)}
                 />
               </div>
-              {/* <label className="input-label" htmlFor="bioIn">Bio</label>
-            <textarea
-              name="bio"
-              defaultValue={page.bio}
-              id="bioIn"
-              placeholder="Your bio goes here..." /> */}
               {changesMade && <div className="max-w-[200px]">
                 <SubmitFormButton>
                   <SaveIcon className="w-5 h-5" />

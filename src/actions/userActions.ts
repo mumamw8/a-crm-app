@@ -3,9 +3,21 @@
 
 import { db } from "@/server/db";
 import { type NewUser } from "@/types";
-import { currentUser } from "@clerk/nextjs/server"
+import { type User, currentUser } from "@clerk/nextjs/server"
 import { user } from "@/server/db/schema";
+import { eq } from "drizzle-orm";
 
+export async function getUser() {
+  const loggedInUser: User | null = await currentUser();
+
+  if (loggedInUser) {
+    const result = await db.select().from(user).where(eq(user.providerId, loggedInUser.id));
+    const dbUser = result[0];
+    return dbUser;
+  }
+
+  return null;
+}
 
 export async function createUser(formData: FormData) {
   const loggedInUser = await currentUser();

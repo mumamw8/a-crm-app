@@ -4,11 +4,11 @@
 
 
 import SectionBox from "@/components/layouts/section-box";
-import { lusitana } from "@/lib/fonts";
 import { type SelectedPerson } from "@/types";
 import PersonDetailsForm from "../_components/person-details-form";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getPerson } from "@/actions/personActions";
 
 type Props = {
   params: { personId: string};
@@ -17,16 +17,17 @@ type Props = {
 async function PersonPage({ params }: Props) {
   const personId = params.personId;
 
-  const getData = async (id:string) => {
-    const res = await fetch(`http://localhost:3000/api/people/${id}`);
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  }
-  const data = await getData(personId);
-  const person: SelectedPerson = data.data[0] as SelectedPerson;
+  // const getData = async (id:string) => {
+  //   const res = await fetch(`http://localhost:3000/api/people/${id}`);
+  //   if (!res.ok) {
+  //     // This will activate the closest `error.js` Error Boundary
+  //     throw new Error('Failed to fetch data');
+  //   }
+  //   return res.json();
+  // }
+  // const data = await getData(personId);
+  // const person: SelectedPerson = data.data[0] as SelectedPerson;
+  const person: SelectedPerson = await getPerson(personId) as SelectedPerson;
 
   return (
     <div className={`flex flex-col gap-y-8`}>

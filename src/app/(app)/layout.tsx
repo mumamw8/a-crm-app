@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+
 import { db } from "@/server/db";
 import { user } from "@/server/db/schema";
 import { type User, currentUser } from "@clerk/nextjs/server";

@@ -3,7 +3,6 @@ import { db } from "@/server/db";
 import { company } from "@/server/db/schema";
 import { count } from "drizzle-orm";
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   // const body = await request.json();
