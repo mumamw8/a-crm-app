@@ -28,7 +28,7 @@ function LeadsDataGrid(this: any) {
   });
   const grid = useRef<GridComponent>(null);
   const data: object | undefined = [];
-  const BASE_URL = "/api/lead";
+  const BASE_URL = "/api/leads";
 
   function renderComplete() {
     const state = { skip: 0, take: 10000 };

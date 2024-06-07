@@ -6,8 +6,10 @@ import { count } from "drizzle-orm";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   // const body = await request.json();
-  const skip = parseInt(searchParams.get('skip') ?? "0")
-  const take = parseInt(searchParams.get('take') ?? "10");
+  const page = parseInt(searchParams.get('page') ?? "1")
+  const pageSize = parseInt(searchParams.get('pageSize') ?? "20");
+
+  const skip = (page - 1) * pageSize;
 
   try {
     const totalRecordsCount = await db
@@ -18,7 +20,7 @@ export async function GET(request: Request) {
     .select()
     .from(company)
     .orderBy(company.name)
-    .limit(take)
+    .limit(pageSize)
     .offset(skip);
 
     return Response.json({ data: result, count: totalRecordsCount });
